@@ -3,6 +3,7 @@
 #include <locale.h>
 #include <string.h>
 #include "estrutura.h"
+#include "Cadastrar_Imoveis.h"
 
 int main(){
 
