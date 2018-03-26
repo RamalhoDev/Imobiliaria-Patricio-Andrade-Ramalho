@@ -54,6 +54,7 @@ int main(){
     FILE *imoveis;
     imoveis = fopen("imobiliaria.txt", "ab");
     int escolha  = Menu();
+    Ler(imoveis);
     SubMenu(escolha, imoveis);
     setlocale(LC_ALL, "Portuguese");
     fclose(imoveis);
@@ -76,7 +77,84 @@ int Menu(){
     return i;
 }
 
+Ler(FILE *imoveis){
+	imoveis = fopen("imobiliaria.txt", "w+");
+	int i;
+	for(i=0; i<=feof; i++){
+		fread(imovel, size(tImovel), 1, imoveis);
+		printf("Imovel %d\n%c\n", i, imovel.rua);
+		printf("%d\n", imovel.numero);
+		printf("%c\n", imovel.bairro);
+		printf("%c\n", imovel.cep);
+		printf("%c\n", imovel.cidade);
+		printf("%d\n", imovel.transacao);
+		printf("%d\n", imovel.tipo);
+		printf("%ld\n", imovel.valor);
+		printf("%d\n", imovel.ap.andar);
+		printf("%d\n", imovel.ap.area);
+		printf("%d\n", imovel.ap.qtQuartos);
+		printf("%d\n", imovel.ap.qtGaragens);
+		printf("%c\n", imovel.ap.posicao);
+		printf("%ld\n", imovel.ap.condominio);
+		printf("%d\n", imovel.casa.qtQuartos);
+		printf("%d\n", imovel.casa.areaTer);
+		printf("%d\n", imovel.casa.areaConst);
+		printf("%d\n", imovel.casa.andares);
+		printf("%d\n", imovel.ter.area);
+	}
+	fclose(imoveis);
+}
 
+
+Consultar_Por_Tipo(){
+	int Escolha;
+	printf("Selecione o tipo:  ");
+	printf("1- Casa\n");
+	printf("2- Apartamento\n");
+	printf("3- Terreno\n");
+	scanf("%d", &Escolha);
+	switch(Escolha){
+		case 1: 
+			Ler_Casa();
+			break;
+		case 2: 
+			Ler_Apartamento();
+			break;
+		case 3: 
+			Ler_Terreno();
+			break;
+		default("ERRO\n\n");
+	}
+}
+
+Consultar_Tudo(){
+	Ler();
+}
+
+void Consultar(int escolha){
+	switch(escolha)[
+		case 1:
+			Consultar_Por_Tipo();
+			break;
+		case 2:
+			Ler_Venda();
+			break;
+		case 3:
+			Ler_Alugar();
+			break;
+		case 4:
+			Ler_Cidade();
+			break;
+		case 5:
+			Consultar_Tudo();
+			break;
+		case 6:
+			Consultar_Tudo_Detalhes();
+			break;
+		default:
+			printf("ERRO\n\n");
+	]
+}
 
 
 
@@ -168,13 +246,14 @@ void SubMenu(int indice, FILE *imoveis){
             break;
         case 2:
             printf("2-1.Consultar imóveis por tipo (casa, apartamento ou terreno:\n");
-            printf("2-2.Consultar imóveis para vender por bairro:\n");
-            printf("2-3.Consultar imóveis para alugar por bairro:\n");
+            printf("2-2.Consultar imóveis para vender:\n");
+            printf("2-3.Consultar imóveis para alugar:\n");
             printf("2-4.Consultar imóveis disponíveis por cidade:\n");
             printf("2-5.Consultar todos os imóveis :\n");
             printf("2-6.Consultar todos  os imóveis e suas características:\n");
             printf("Digite sua opção (1 a 6):  ");
             scanf("%d", &escolha);
+            Consultar(escolha);
 
             break;
     }
