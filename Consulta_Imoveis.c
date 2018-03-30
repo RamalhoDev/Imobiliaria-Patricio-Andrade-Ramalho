@@ -121,10 +121,51 @@ void Consultar_Alugar_Bairro(tImovel imovel,FILE *imoveis){
     }
 }
 
+void STRING_MAIUSCULO(char frase[], size_t tamanho){
+    int i;
 
-void Consultar_Descricao_Todos_Imoveis(tImovel imovelT ,FILE * imoveis){
-
+    for(i = 0; i < tamanho-1; i++){
+        frase[i] = toupper(frase[i]);
+    }
 }
-void Consultar_Descricao_Cidade(tImovel imovelT ,FILE *imoveis){
-    
+
+
+void Consultar_Descricao_Todos_Imoveis(tImovel imovel ,FILE * imoveis){
+    while(fread(&imovel, sizeof(tImovel), 1, imoveis)){
+            printf("Imóvel %d da Rua: %s", imovel.numero, imovel.rua);
+            printf("Preço: R$ %.2lf || ", imovel.valor);
+            if(imovel.tipo == 2 || imovel.tipo == 4 || imovel.tipo == 5){
+                printf("Condomínio: R$ %.2lf\n", imovel.condominio);
+            }
+            printf("Bairro: %s || Endereço: %s, %d\n", imovel.bairro, imovel.rua, imovel.numero);
+            printf("CEP: %s || Cidade: %s");
+        if(feof(imoveis)){
+            break;
+        }
+    }
+}
+
+
+
+void Consultar_Descricao_Cidade(tImovel imovel ,FILE *imoveis){
+    char cidade2[Qt];
+    size_t tamanho;
+
+    printf("Qual cidade você deseja procurar ?\n");
+    fgets(cidade2, Qt, stdin);
+    tamanho = strlen(cidade2);
+    STRING_MAIUSCULO(cidade2, tamanho);
+
+    while(fread(&imovel, sizeof(tImovel), 1, imoveis)){
+        if(!strcmp(cidade2 ,imovel.cidade) ){
+            printf("Casa %d da Rua: %s", imovel.numero, imovel.rua);
+            printf("Preço: R$ %.2lf\n", imovel.valor);
+            if(imovel.tipo == 2 || imovel.tipo == 4 || imovel.tipo == 5){
+                printf("Condomínio: R$ %.2lf\n\n", imovel.condominio);
+            }
+        }
+        if(feof(imoveis)){
+            break;
+        }
+    }
 }

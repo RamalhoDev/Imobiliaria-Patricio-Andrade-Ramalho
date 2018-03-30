@@ -540,7 +540,7 @@ void Consultar_Descricao_Cidade(tImovel imovel ,FILE *imoveis){
     STRING_MAIUSCULO(cidade2, tamanho);
 
     while(fread(&imovel, sizeof(tImovel), 1, imoveis)){
-        if(!strcmp(cidade2 ,imovel.bairro) ){
+        if(!strcmp(cidade2 ,imovel.cidade) ){
             printf("Casa %d da Rua: %s", imovel.numero, imovel.rua);
             printf("Preço: R$ %.2lf\n", imovel.valor);
             if(imovel.tipo == 2 || imovel.tipo == 4 || imovel.tipo == 5){

@@ -8,3 +8,4 @@ void Consultar_Vender_Bairro(tImovel imovel ,FILE *imoveis);
 void Consultar_Alugar_Bairro(tImovel imovel ,FILE *imoveis);
 void Consultar_Descricao_Todos_Imoveis(tImovel imovel ,FILE *imoveis);
 void Consultar_Descricao_Cidade(tImovel imovel ,FILE *imoveis);
+void STRING_MAIUSCULO(char frase[], size_t tamanho);
