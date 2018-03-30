@@ -46,6 +46,8 @@ void Cadastrar_Imoveis(tImovel imovel,FILE *imoveis){
     }
 
     fwrite(&imovel , sizeof(imovel),1, imoveis);
+	fseek(imoveis, 0, SEEK_SET);
+
 }
 
 
