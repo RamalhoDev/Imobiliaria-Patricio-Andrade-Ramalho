@@ -395,6 +395,102 @@ void Consultar_Descricao_Cidade(tImovel imovel ,FILE *imoveis){
     }
 }
 
+void Consultar_Descricao_Casa(tImovel imovel){
+    puts("-------------------------------------------------\n");
+    printf("\t\t\tCasa\n");
+    puts("-------------------------------------------------\n\n");
+    puts("Dados de Localização\n\n");
+    printf("Casa numero: %d da Rua: %s\n", imovel.numero, imovel.rua);
+    printf("Bairro: %s\n", imovel.bairro);
+    printf("CEP: %s\n"imovel.cep);
+    
+    puts("Dados Mobiliários\n\n");
+    printf("Quantidade de Andares: %d\n",imovel.casa.andares);
+    printf("Quantidade de Quartos: %d\n",imovel.casa.qtQuartos);
+    printf("Extensao territorial: %d\n",imovel.casa.areaTer);
+    printf("Área Construída: %d\n",imovel.casa.areaConst);
+    printf("Preço: R$ %.2lf\n", imovel.valor);
+}
+
+void Consultar_Descricao_Apartamento(tImovel imovel){
+    puts("-------------------------------------------------\n");
+    printf("\t\t\tApartamento\n");
+    puts("-------------------------------------------------\n\n");
+    puts("Dados de Localização\n\n");
+    printf("Casa numero: %d da Rua: %s\n", imovel.numero, imovel.rua);
+    printf("Bairro: %s\n", imovel.bairro);
+    printf("CEP: %s\n"imovel.cep);
+    
+    puts("Dados Mobiliários\n\n");
+    printf("Andar do apartamento: %d\n",imovel.ap.andar);
+    printf("Quantidade de quartos do apartamento: %d\n",imovel.ap.qtQuartos);
+    printf("Extensao territorial: %d\n",imovel.ap.area);
+    print("Posição do apartamento: %s\n",imovel.ap.posicao);
+    printf("Vagas na Garagem: %d",imovel.ap.qtGaragens);
+    printf("Valor do condomínio: R$ %.2lf\n", imovel.ap.condominio);
+    printf("Preço: R$ %.2lf\n", imovel.valor);
+}
+
+void Consultar_Descricao_Terreno(tImovel imovel){
+    puts("-------------------------------------------------\n");
+    printf("\t\t\tTerreno\n");
+    puts("-------------------------------------------------\n\n");
+    puts("Dados de Localização\n\n");
+    printf("Casa numero: %d da Rua: %s\n", imovel.numero, imovel.rua);
+    printf("Bairro: %s\n", imovel.bairro);
+    printf("CEP: %s\n"imovel.cep);
+    
+    puts("Dados Mobiliários\n\n");
+    printf("Área do Terreno: %d\n",imovel.ter.area);
+    printf("Preço: R$ %.2lf\n", imovel.valor);
+}
+
+void Consulta_Descricao_Flat(tImovel imovel){
+    puts("-------------------------------------------------\n");
+    printf("\t\t\tFlat\n");
+    puts("-------------------------------------------------\n\n");
+    puts("Dados de Localização\n\n");
+    printf("Casa numero: %d da Rua: %s\n", imovel.numero, imovel.rua);
+    printf("Bairro: %s\n", imovel.bairro);
+    printf("CEP: %s\n"imovel.cep);
+    
+    puts("Dados Mobiliários\n\n");
+    printf("Área do Imóvel: %d\n",imovel.flat.area);
+    printf("Possui ar-condicionado: %s\n",imovel.flat.ar);
+    printf("Possui internet: %s\n",imovel.flat.internet);
+    printf("Possui Tv a cabo: %s\n",imovel.flat.tv);
+    printf("Possui Lavanderia: %s\n",imovel.flat.lavanderia);
+    printf("Possui Serviço de quarto %s\n",imovel.flat.limpeza);
+    printf("Possui Recepção 24 horas %s\n",imovel.flat.recepcao);
+    printf("Valor: %.2lf\n",imovel.flat.condominio);
+    printf("Preço: R$ %.2lf\n", imovel.valor);
+}
+
+void Consulta_Descricao_Studio(tImovel imovel){
+    puts("-------------------------------------------------\n\n");
+    printf("\t\t\t6Studio\n");
+    puts("-------------------------------------------------\n\n");
+    puts("Dados de Localização\n\n");
+    printf("Casa numero: %d da Rua: %s\n", imovel.numero, imovel.rua);
+    printf("Bairro: %s\n", imovel.bairro);
+    printf("CEP: %s\n"imovel.cep);
+
+    puts("Dados Mobiliários\n\n");
+    printf("Área do Imóvel: %d\n",imovel.flat.area);
+    printf("Possui ar-condicionado: %s\n",imovel.flat.ar);
+    printf("Possui internet: %s\n",imovel.flat.internet);
+    printf("Possui Tv a cabo: %s\n",imovel.flat.tv);
+    printf("Possui Lavanderia: %s\n",imovel.flat.lavanderia);
+    printf("Possui Serviço de quarto %s\n",imovel.flat.limpeza);
+    printf("Possui Recepção 24 horas %s\n",imovel.flat.recepcao);
+    printf("Valor: %.2lf\n",imovel.flat.condominio);
+    printf("Preço: R$ %.2lf\n", imovel.valor);
+
+    printf("Possui Piscina: %s\n",imovel.studio.piscina);
+    printf("Possui Sauna: %s\n",imovel.studio.sauna);  
+    printf("Possui Academia: %s\n",imovel.studio.academia);  
+}
+
 void Consulta_Parcial_Casa(tImovel imovel){
     puts("-------------------------------------------------\n");
     printf("\t\t\tCasa\n");
@@ -442,7 +538,7 @@ void Consulta_Parcial_Flat(tImovel imovel){
 }
 
 void Consulta_Parcial_Studio(tImovel imovel){
-    uts("-------------------------------------------------\n\n");
+    puts("-------------------------------------------------\n\n");
     printf("\t\t\tStudio\n");
     puts("-------------------------------------------------\n\n");
     puts("Dados de Localização\n\n");

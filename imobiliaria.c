@@ -388,10 +388,10 @@ void SubMenu(tImovel imovel,int indice, FILE *imoveis){
                     Consultar_Alugar_Bairro(imovel, imoveis);
                     break;
                 case 6:
-                    //Consultar_Descricao_Cidade(imovel, imoveis);
+                    Consultar_Descricao_Cidade(imovel, imoveis);
                     break;
                 case 7:
-                    //Consultar_Descricao_Todos_Imoveis(imovel, imoveis);
+                    Consultar_Descricao_Todos_Imoveis(imovel, imoveis);
                     break;
             }
             break;

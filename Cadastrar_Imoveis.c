@@ -28,17 +28,17 @@ void Cadastrar_Imoveis(tImovel imovel,FILE *imoveis){
     
     switch(imovel.tipo){
         case 1:
-            Cadastrar_Casa(imoveis);
+            Cadastrar_Casa(imovel,imoveis);
             break;
         case 2:
-            Cadastrar_Apartamento(imoveis);
+            Cadastrar_Apartamento(imovel,imoveis);
             break;
         case 3:
-            Cadastrar_Terreno(imoveis);
+            Cadastrar_Terreno(imovel,imoveis);
             break;
         case 4:
         case 5:
-            Cadastrar_Flat_Studio(imoveis);
+            Cadastrar_Flat_Studio(imovel,imoveis);
             break;
     
         default:
@@ -54,38 +54,40 @@ void Cadastrar_Imoveis(tImovel imovel,FILE *imoveis){
 void Cadastrar_Casa(tImovel imovel,FILE *imoveis){
 	//Inicializa tudo com 0
 	imovel.casa.andares = imovel.casa.areaConst = imovel.casa.areaTer = imovel.casa.qtQuartos = 0;
-	
-	//Recebe do usuario todos os valores do imovel tipo Casa
-    printf("Digite a quantidade de quartos da casa: ");
-    scanf("%d", &imovel.casa.qtQuartos);
-    printf("Digite a quantidade de andares: ");
-    scanf("%d", &imovel.casa.andares);
-    printf("Digite a area do terreno (metros quadrados): ");
-    scanf("%d", &imovel.casa.areaTer);
-    printf("Digite a area construida (metros quadrados): " );
-    scanf("%d%*c", &imovel.casa.areaConst);
-    
-    //Verifica se a area construida e maior que a area do terreno
-    if(imovel.casa.areaConst > imovel.casa.areaTer){
-    	printf("\nArea construida nao pode ser maior que a area do terreno!\n\n");
-    	Cadastrar_Casa(imoveis);
-	}
-    
-    //Verifica se algum dos valores nao foi digitado
-    if(imovel.casa.andares == 0){
-    	printf("\nQuantidade de andares nao especificada!\n\n");
-    	Cadastrar_Casa(imoveis);
-	}else if(imovel.casa.areaConst == 0){
-		printf("\nArea construida nao especificada!\n\n");
-    	Cadastrar_Casa(imoveis);
-	}else if(imovel.casa.areaTer == 0){
-		printf("\nArea do terreno nao especificada!\n\n");
-    	Cadastrar_Casa(imoveis);
-	}else if(imovel.casa.qtQuartos == 0){
-		printf("\nQuantidade de quartos n�o especificada!\n\n");
-    	Cadastrar_Casa(imoveis);
-	}
-	
+	while(1){
+		//Recebe do usuario todos os valores do imovel tipo Casa
+		printf("Digite a quantidade de quartos da casa: ");
+		scanf("%d", &imovel.casa.qtQuartos);
+		printf("Digite a quantidade de andares: ");
+		scanf("%d", &imovel.casa.andares);
+		printf("Digite a area do terreno (metros quadrados): ");
+		scanf("%d", &imovel.casa.areaTer);
+		printf("Digite a area construida (metros quadrados): " );
+		scanf("%d%*c", &imovel.casa.areaConst);
+		
+		//Verifica se a area construida e maior que a area do terreno
+		if(imovel.casa.areaConst > imovel.casa.areaTer){
+			printf("\nArea construida nao pode ser maior que a area do terreno!\n\n");
+			continue;
+		}
+		
+		//Verifica se algum dos valores nao foi digitado
+		if(imovel.casa.andares == 0){
+			printf("\nQuantidade de andares nao especificada!\n\n");
+			continue;
+		}else if(imovel.casa.areaConst == 0){
+			printf("\nArea construida nao especificada!\n\n");
+			continue;
+		}else if(imovel.casa.areaTer == 0){
+			printf("\nArea do terreno nao especificada!\n\n");
+			continue;
+		}else if(imovel.casa.qtQuartos == 0){
+			printf("\nQuantidade de quartos n�o especificada!\n\n");
+			continue;
+		}else{
+			break;
+		}
+    }
 	puts("Cadastro concluido com sucesso!");	
 }
 
@@ -100,7 +102,7 @@ void Cadastrar_Terreno(tImovel imovel,FILE *imoveis){
     //Verifica se a area foi digitada
     if(imovel.ter.area == 0){
     	printf("\nArea nao digitada!\n\n");
-    	Cadastrar_Casa(imoveis);
+    	Cadastrar_Casa(imovel,imoveis);
 	}else
 		puts("Cadastro concluido com sucesso!");
 }
@@ -109,43 +111,47 @@ void Cadastrar_Apartamento(tImovel imovel,FILE *imoveis){
     //Inicializa tudo com 0
 	imovel.ap.andar = imovel.ap.area = imovel.ap.qtGaragens = imovel.ap.qtQuartos = imovel.ap.condominio = 0;
 	
-	//Recebe do usuario todos os valores do imovel tipo Casa
-    printf("Digite a quantiade de quartos do apartamento: ");
-    scanf("%d", &imovel.ap.qtQuartos);
-    printf("Digite o andar do apartamento: ");
-    scanf("%d", &imovel.ap.andar);
-    printf("Digite a area do apartamento (metros quadrados): ");
-    scanf("%d", &imovel.ap.area);
-    printf("Digite a quantidade de garagens: " );
-    scanf("%d", &imovel.ap.qtGaragens);
-    printf("Digite o valor do condominio: ");
-    scanf("%lf", &imovel.ap.condominio);
-    printf("Digite a posicao do apartamento: ");
-    fgets(imovel.ap.posicao, Qt, stdin);
-    getchar();
-    
-    //Verifica se algum dos valores nao foi digitado
-    if(imovel.ap.andar == 0){
-    	printf("\nQuantidade de andares nao especificada!\n\n");
-    	Cadastrar_Apartamento(imoveis);
+	while(1){
+		//Recebe do usuario todos os valores do imovel tipo Casa
+		printf("Digite a quantiade de quartos do apartamento: ");
+		scanf("%d", &imovel.ap.qtQuartos);
+		printf("Digite o andar do apartamento: ");
+		scanf("%d", &imovel.ap.andar);
+		printf("Digite a area do apartamento (metros quadrados): ");
+		scanf("%d", &imovel.ap.area);
+		printf("Digite a quantidade de garagens: " );
+		scanf("%d", &imovel.ap.qtGaragens);
+		printf("Digite o valor do condominio: ");
+		scanf("%lf", &imovel.ap.condominio);
+		printf("Digite a posicao do apartamento: ");
+		fgets(imovel.ap.posicao, Qt, stdin);
+		getchar();
+		
+		//Verifica se algum dos valores nao foi digitado
+		if(imovel.ap.andar == 0){
+			printf("\nQuantidade de andares nao especificada!\n\n");
+			continue;
+		}
+		else if(imovel.ap.area == 0){
+			printf("\nArea construida nao especificada!\n\n");
+			continue;
+		}
+		else if(imovel.ap.qtGaragens == 0){
+			printf("\nQuantidade de garagens nao especificada!\n\n");
+			continue;
+		}
+		else if(imovel.ap.qtQuartos == 0){
+			printf("\nQuantidade de quartos n�o especificada!\n\n");
+			continue;
+		}
+		else if(imovel.ap.condominio == 0){
+			printf("\nValor do condominio n�o especificada!\n\n");
+			continue;
+		}else{
+			break;
+		}
+
 	}
-	if(imovel.ap.area == 0){
-		printf("\nArea construida nao especificada!\n\n");
-    	Cadastrar_Apartamento(imoveis);
-	}
-	if(imovel.ap.qtGaragens == 0){
-		printf("\nQuantidade de garagens nao especificada!\n\n");
-    	Cadastrar_Apartamento(imoveis);
-	}
-	if(imovel.ap.qtQuartos == 0){
-		printf("\nQuantidade de quartos n�o especificada!\n\n");
-    	Cadastrar_Apartamento(imoveis);
-	}
-	if(imovel.ap.condominio == 0){
-		printf("\nValor do condominio n�o especificada!\n\n");
-    	Cadastrar_Apartamento(imoveis);
-	}
-	
 	puts("Cadastro concluido com sucesso!");
 }
 
@@ -182,40 +188,42 @@ void Cadastrar_Flat_Studio(tImovel imovel,FILE *imoveis){
         printf("O imovel tem academia (s/n)? ");
         scanf("%c%*c", &imovel.studio.academia);
     }
-	
-    //Verifica se alguma informacao esta faltando
-	if(imovel.flat.area == 0){
-    	printf("\nArea do imovel nao especificada!\n\n");
-    	Cadastrar_Flat_Studio(imoveis);
-	}
-	if(imovel.flat.condominio == 0){
-    	printf("\nValor do condominio nao especificado!\n\n");
-    	Cadastrar_Flat_Studio(imoveis);
-	}
-	if(imovel.flat.ar != 's' || imovel.flat.ar != 'n'){
-    	printf("\nInformacao sobre o arcondicionado nao especificada!\n\n");
-    	Cadastrar_Flat_Studio(imoveis);
-	}
-	if(imovel.flat.internet != 's' || imovel.flat.internet != 'n'){
-    	printf("\nInformacao sobre a internet nao especificada!\n\n");
-    	Cadastrar_Flat_Studio(imoveis);
-	}
-	if(imovel.flat.tv != 's' || imovel.flat.ar != 'n'){
-    	printf("\nInformacao sobre a TV a cabo nao especificada!\n\n");
-    	Cadastrar_Flat_Studio(imoveis);
-	}
-	if(imovel.flat.lavanderia != 's' || imovel.flat.lavanderia != 'n'){
-    	printf("\nInformacao sobre a lavanderia nao especificada!\n\n");
-    	Cadastrar_Flat_Studio(imoveis);
-	}
-	if(imovel.flat.limpeza != 's' || imovel.flat.limpeza != 'n'){
-    	printf("\nInformacao sobre a limpeza nao especificada!\n\n");
-    	Cadastrar_Flat_Studio(imoveis);
-	}
-	if(imovel.flat.recepcao != 's' || imovel.flat.recepcao != 'n'){
-    	printf("\nInformacao sobre a recepcao nao especificada!\n\n");
-    	Cadastrar_Flat_Studio(imoveis);
-	}
-	
+	while(1){	
+		//Verifica se alguma informacao esta faltando
+		if(imovel.flat.area == 0){
+			printf("\nArea do imovel nao especificada!\n\n");
+			continue;
+		}
+		else if(imovel.flat.condominio == 0){
+			printf("\nValor do condominio nao especificado!\n\n");
+			continue;
+		}
+		else if(imovel.flat.ar != 's' || imovel.flat.ar != 'n'){
+			printf("\nInformacao sobre o arcondicionado nao especificada!\n\n");
+			continue;
+		}
+		else if(imovel.flat.internet != 's' || imovel.flat.internet != 'n'){
+			printf("\nInformacao sobre a internet nao especificada!\n\n");
+			continue;
+		}
+		else if(imovel.flat.tv != 's' || imovel.flat.ar != 'n'){
+			printf("\nInformacao sobre a TV a cabo nao especificada!\n\n");
+			continue;
+		}
+		else if(imovel.flat.lavanderia != 's' || imovel.flat.lavanderia != 'n'){
+			printf("\nInformacao sobre a lavanderia nao especificada!\n\n");
+			continue;
+		}
+		else if(imovel.flat.limpeza != 's' || imovel.flat.limpeza != 'n'){
+			printf("\nInformacao sobre a limpeza nao especificada!\n\n");
+			continue;
+		}
+		else if(imovel.flat.recepcao != 's' || imovel.flat.recepcao != 'n'){
+			printf("\nInformacao sobre a recepcao nao especificada!\n\n");
+			continue;
+		}else{
+			break;
+		}
+	}	
     puts("Cadastro concluido com sucesso!");
 }
