@@ -132,19 +132,94 @@ void STRING_MAIUSCULO(char frase[], size_t tamanho){
 
 void Consultar_Descricao_Todos_Imoveis(tImovel imovel ,FILE * imoveis){
     while(fread(&imovel, sizeof(tImovel), 1, imoveis)){
-
-            printf("Imóvel %d da Rua: %s", imovel.numero, imovel.rua);
-            printf("Preço: R$ %.2lf || ", imovel.valor);
-            if(imovel.tipo == 2 || imovel.tipo == 4 || imovel.tipo == 5){
-                printf("Condomínio: R$ %.2lf\n", imovel.condominio);
-            }
-            printf("Bairro: %s    || \nEndereço: \nRua: %s, \nNúmero:%d\n", imovel.bairro, imovel.rua, imovel.numero);
-            printf("\nCidade: %s || CEP: %s\n", imovel.cidade, imovel.cep);
+             if(imovel.tipo==1){
+                 puts("-------------------------------------------------\n");
+                 puts("Dados de Localização da Casa numero: %d\n\n", imovel.numero);
+                 
+                 puts("-------------------------------------------------\n\n");
+                 
+                 printf("Cidade: %s\n", imovel.cidade);
+                 printf("Bairro: %s\n", imovel.bairro);
+                 printf("Rua: %s\n", imovel.numero, imovel.rua);
+                 printf("CEP: %s\n"imovel.cep);
+                 
+                 puts("Dados Mobiliários\n\n");
+                 printf("Quantidade de Andares: %d\n",imovel.casa.andares);
+                 printf("Quantidade de Quartos: %d\n",imovel.casa.qtQuartos);
+                 printf("Extensao territorial: %d\n",imovel.casa.areaTer);
+                 printf("QArea Construída: %d\n",imovel.casa.areaConst);
+                 printf("Preço: R$ %.2lf\n", imovel.valor);
+             }
+             if(imovel.tipo==2){
+                 puts("-------------------------------------------------\n");
+                 puts("Dados de Localização do Predio numero: %d\n\n", imovel.numero);
+                 puts("-------------------------------------------------\n\n");
+                 
+                 printf("Cidade: %s\n", imovel.cidade);
+                 printf("Bairro: %s\n", imovel.bairro);
+                 printf("Rua: %s\n", imovel.rua);
+                 printf("CEP: %s\n"imovel.cep);
+                 
+                 puts("Dados Mobiliários\n\n");
+                 printf("Andar do apartamento: %d\n",imovel.ap.andar);
+                 printf("Quantidade de quartos do apartamento: %d\n",imovel.ap.qtQuartos);
+                 printf("Extensao territorial: %d\n",imovel.ap.area);
+                 print("Posição do apartamento: %s\n",imovel.ap.posicao);
+                 printf("Vagas na Garagem: %d",imovel.ap.qtGaragens);
+                 printf("Valor do condomínio: R$ %.2lf\n", imovel.ap.condominio);
+             }
+             if(imovel.tipo==3){
+                puts("-------------------------------------------------\n");
+                puts("Dados de Localização do Terreno numero: %d\n\n");
+                 
+                 puts("-------------------------------------------------\n\n");
+               printf("Cidade: %s\n", imovel.cidade); 
+                printf("Bairro: %s\n", imovel.bairro);
+                 printf("CEP: %s\n", imovel.cep);
+                 printf("Rua: %s\n", imovel.rua);
+                 
+                 puts("Dados Mobiliários\n\n");
+                 printf("Área do Terreno: %d\n",imovel.ter.area);
+             }
+             if(imovel.tipo==4 || 5){
+                 puts("-------------------------------------------------\n");
+                 if(imovel.tipo==4){
+                    puts("Dados de Localização do Flat numero: %d\n\n", imovel.numero);
+                    
+                 
+                 }
+                 if(tipo.imovel==5){
+                    puts("Dados de Localização do Studio numero: %d\n\n", imovel.numero);
+                     
+                 }
+                 puts("-------------------------------------------------\n\n");
+                 printf("Cidade: %s\n", imovel.cidade);
+                 printf("Bairro: %s\n", imovel.bairro);
+                 printf("Rua: %s\n", imovel.rua);
+                 printf("CEP: %s\n"imovel.cep);
+                 
+                 puts("Dados Mobiliários\n\n");
+                 printf("Área do Imóvel: %d\n",imovel.flat.area);
+                 printf("Possui ar-condicionado: %s\n",imovel.flat.ar);
+                 printf("Possui internet: %s\n",imovel.flat.internet);
+                 printf("Possui Tv a cabo: %s\n",imovel.flat.tv);
+                 printf("Possui Lavanderia: %s\n",imovel.flat.lavanderia);
+                 printf("Possui Serviço de quarto %s\n",imovel.flat.limpeza);
+                 printf("Possui Recepção 24 horas %s\n",imovel.flat.recepcao);
+                 printf("Valor: %.2lf\n",imovel.flat.condominio);
+                 
+                 if(tipo.imovel==5){
+                     printf("Possui Pscina: %s\n",imovel.studio.piscina);
+                     printf("Possui Sauna: %s\n",imovel.studio.sauna);  
+                     printf("Possui Academia: %s\n",imovel.studio.academia);  
+                 }
+             }
         if(feof(imoveis)){
             break;
         }
     }
 }
+
 
 
 
@@ -166,7 +241,7 @@ void Consultar_Descricao_Cidade(tImovel imovel ,FILE *imoveis){
                 puts("Dados de Localização\n\n");
                 printf("Casa numero: %d da Rua: %s\n", imovel.numero, imovel.rua);
                 printf("Bairro: %s\n", imovel.bairro);
-                printf("CEP: %s\n"imovel.bairro);
+                printf("CEP: %s\n"imovel.cep);
                 
                 puts("Dados Mobiliários\n\n");
                 printf("Quantidade de Andares: %d\n",imovel.casa.andares);
@@ -182,7 +257,7 @@ void Consultar_Descricao_Cidade(tImovel imovel ,FILE *imoveis){
                 puts("Dados de Localização\n\n");
                 printf("Casa numero: %d da Rua: %s\n", imovel.numero, imovel.rua);
                 printf("Bairro: %s\n", imovel.bairro);
-                printf("CEP: %s\n"imovel.bairro);
+                printf("CEP: %s\n"imovel.cep);
                 
                 puts("Dados Mobiliários\n\n");
                 printf("Andar do apartamento: %d\n",imovel.ap.andar);
@@ -199,7 +274,7 @@ void Consultar_Descricao_Cidade(tImovel imovel ,FILE *imoveis){
                 puts("Dados de Localização\n\n");
                 printf("Casa numero: %d da Rua: %s\n", imovel.numero, imovel.rua);
                 printf("Bairro: %s\n", imovel.bairro);
-                printf("CEP: %s\n"imovel.bairro);
+                printf("CEP: %s\n"imovel.cep);
                 
                 puts("Dados Mobiliários\n\n");
                 printf("Área do Terreno: %d\n",imovel.ter.area);
@@ -216,7 +291,7 @@ void Consultar_Descricao_Cidade(tImovel imovel ,FILE *imoveis){
                 puts("Dados de Localização\n\n");
                 printf("Casa numero: %d da Rua: %s\n", imovel.numero, imovel.rua);
                 printf("Bairro: %s\n", imovel.bairro);
-                printf("CEP: %s\n"imovel.bairro);
+                printf("CEP: %s\n"imovel.cep);
                 
                 puts("Dados Mobiliários\n\n");
                 printf("Área do Imóvel: %d\n",imovel.flat.area);
