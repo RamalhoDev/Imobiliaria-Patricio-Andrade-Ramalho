@@ -42,7 +42,7 @@ void Cadastrar_Imoveis(tImovel imovel,FILE *imoveis){
             break;
     
         default:
-            printf("Esse tipo nao existe.");
+            printf("Opção inexistente.");
     }
 
     fwrite(&imovel , sizeof(imovel),1, imoveis);
@@ -94,7 +94,7 @@ void Cadastrar_Terreno(tImovel imovel,FILE *imoveis){
 	imovel.ter.area = 0;
 	
 	//Recebe do usuario a area do terreno
-    printf("Digite a quantiade de quartos da casa: ");
+    printf("Digite a área do terreno: ");
     scanf("%d", &imovel.ter.area);
     
     //Verifica se a area foi digitada
@@ -166,7 +166,7 @@ void Cadastrar_Flat_Studio(tImovel imovel,FILE *imoveis){
 	scanf("%c%*c", &imovel.flat.tv);
 	printf("O imovel tem lavanderia (s/n)? ");
 	scanf("%c%*c", &imovel.flat.lavanderia);
-	printf("O imovel tem servico de limpeza/arrumacao (s/n)? ");
+	printf("O imovel tem servico de quarto (s/n)? ");
 	scanf("%c%*c", &imovel.flat.limpeza);
 	printf("O imovel tem recepcao 24hrs (s/n)? ");
 	scanf("%c%*c", &imovel.flat.recepcao);
@@ -177,9 +177,9 @@ void Cadastrar_Flat_Studio(tImovel imovel,FILE *imoveis){
     if(imovel.tipo == 5){
         printf("O imovel tem piscina (s/n)? ");
 	    scanf("%c%*c", &imovel.studio.piscina);
-        printf("O imovel tem lavanderia (s/n)? ");
+        printf("O imovel tem sauna (s/n)? ");
         scanf("%c%*c", &imovel.studio.sauna);
-        printf("O imovel tem lavanderia (s/n)? ");
+        printf("O imovel tem academia (s/n)? ");
         scanf("%c%*c", &imovel.studio.academia);
     }
 	
