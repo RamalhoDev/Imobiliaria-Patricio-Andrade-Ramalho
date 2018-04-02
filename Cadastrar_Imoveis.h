@@ -1,6 +1,4 @@
-#include "Cadastrar_Imoveis.c"
 #define Qt 60
-
 
 typedef struct{
     int andar;

@@ -1,5 +1,4 @@
-#include "Consulta_Imoveis.c"
-
+#include "Cadastrar_Imoveis.h"
 
 void Consultar_Todos_Imoveis(tImovel imovel ,FILE *imoveis);
 void Consultar_Vender_Tipo(tImovel imovel ,FILE *imoveis);
