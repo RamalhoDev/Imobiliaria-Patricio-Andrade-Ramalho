@@ -1,3 +1,5 @@
+#ifndef CADASTRAR_IMOVEIS_H
+#define CADASTRAR_IMOVEIS_H
 #define Qt 60
 
 typedef struct{
@@ -22,13 +24,13 @@ typedef struct{
 
 typedef struct{
 	int area;
-	double condominio;
 	char ar;
 	char internet;
 	char tv;
 	char lavanderia;
 	char limpeza;
 	char recepcao;
+    double condominio;
 }tFlat;
 
 typedef struct{
@@ -59,3 +61,5 @@ void Cadastrar_Casa(tImovel imovel,FILE *imoveis);
 void Cadastrar_Apartamento(tImovel imovel, FILE *imoveis);
 void Cadastrar_Terreno(tImovel imovel, FILE *imoveis);
 void Cadastrar_Flat_Studio(tImovel imovel,FILE *imoveis);
+
+#endif

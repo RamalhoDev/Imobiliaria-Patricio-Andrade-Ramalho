@@ -19,7 +19,7 @@ int main(){
 
     while(escolha){
         escolha  = Menu();
-        SubMenu(imovel, escolha, imoveis);
+        SubMenu(imovel , escolha, imoveis);
         printf("Deseja terminar o programa ?\n"
                "1-Continuar programa\n"
                "0-Terminar programa\n"
