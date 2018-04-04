@@ -6,7 +6,8 @@
 #include "Consulta_Imoveis.h"
 
 void Cadastrar_Imoveis(tImovel imovel,FILE *imoveis){
-    printf("Insira as seguintes informacoes sobre o imovel:\n");
+	//Cadastro de dados gerais do imóvel
+    printf("Insira as seguintes informacoes sobre o imovel:\n\n");
     printf("Insira o endereo do imovel: ");
     fgets(imovel.rua, Qt, stdin);
     STRING_MAIUSCULO(imovel.rua, strlen(imovel.rua));
@@ -21,6 +22,8 @@ void Cadastrar_Imoveis(tImovel imovel,FILE *imoveis){
     printf("Insira a cidade do imovel: ");
     fgets(imovel.cidade, Qt, stdin);
     STRING_MAIUSCULO(imovel.cidade, strlen(imovel.cidade));
+
+    //Seleção do tipo de imóvel
     printf("Qual o tipo do seu imovel:\n"
            "1-Casa\n"
            "2-Apartamento\n"
@@ -57,10 +60,9 @@ void Cadastrar_Imoveis(tImovel imovel,FILE *imoveis){
             printf("Esse tipo nao existe.");
     }
 
+    //Salva as informações digitadas no arquivo especificado na função main
     fwrite(&imovel , sizeof(imovel),1, imoveis);
 }
-
-
 
 void Cadastrar_Casa(tImovel imovel,FILE *imoveis){
 	//Inicializa tudo com 0

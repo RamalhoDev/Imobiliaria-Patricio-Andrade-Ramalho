@@ -2,6 +2,7 @@
 #define CADASTRAR_IMOVEIS_H
 #define Qt 60
 
+//Definição de todas as estruturas relacionadas as informações dos imóveis e seus tipos
 typedef struct{
     int andar;
     int area;
